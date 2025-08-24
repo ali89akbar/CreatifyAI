@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Pages/Home'
@@ -10,9 +9,9 @@ import GenerateImages from './Pages/GenerateImages';
 import Blogtitles from './Pages/Blogtitles';
 import Community from './Pages/Community';
 import ReviewResume from './Pages/ReviewResume';
+import RemoveBG from './Pages/RemoveBG'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
    <div>
@@ -26,7 +25,7 @@ function App() {
         <Route path='community' element={<Community/>} />
         <Route path='remove-object' element={<RemoveObject/>} />
         <Route path='review-resume' element={<ReviewResume/>} />        
-      
+        <Route path='remove-background' element={<RemoveBG/>} />
        </Route>
 
     </Routes>
