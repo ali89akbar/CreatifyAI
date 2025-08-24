@@ -1,14 +1,36 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import Home from './Pages/Home'
+import Layout from './Pages/Layout'
+import Dashboard from './Pages/Dashboard'
+import WriteArticle from './Pages/WriteArticle'
+import RemoveObject from './Pages/RemoveObject';
+import GenerateImages from './Pages/GenerateImages';
+import Blogtitles from './Pages/Blogtitles';
+import Community from './Pages/Community';
+import ReviewResume from './Pages/ReviewResume';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-   <>
-   </>
+   <div>
+    <Routes>
+      <Route path='/' element={<Home/>} />
+      <Route path='/ai' element={<Layout/>}>
+        <Route index element={<Dashboard/>} />
+        <Route path='write-article' element={<WriteArticle/>} />
+        <Route path='blog-titles' element={<Blogtitles/>} />
+        <Route path='generate-images' element={<GenerateImages/>} />
+        <Route path='community' element={<Community/>} />
+        <Route path='remove-object' element={<RemoveObject/>} />
+        <Route path='review-resume' element={<ReviewResume/>} />        
+      
+       </Route>
+
+    </Routes>
+   </div>
   )
 }
 
