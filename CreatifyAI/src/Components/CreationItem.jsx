@@ -1,0 +1,37 @@
+import React from 'react'
+import Markdown  from 'react-markdown';
+function CreationItem({item}) {
+    const [expanded,setExpanded] = React.useState(false);
+
+  return (
+    <div onClick={()=>setExpanded(!expanded)} className='p-4 max-w-5xl text-sm bg-white border border-gry-200 rounded-lg cursor-pointer'>
+        <div className='flex justify-between items-center gap-4'>
+            <div>
+                <h2 className='font-medium text-slate-700'>{item.prompt}</h2>   
+                <p>{item.type} - {new Date(item.created_at).toLocaleDateString()}</p>
+            </div>
+            <button className='bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E40AF] px-4 py-1 rounded-full'>{item.type}</button>
+
+        </div>  
+        { expanded && (
+            <div>
+                {item.type==='image'?(
+                    <div>
+                        <img src={item.content} alt="" className='mt-3 w-full max-w-md' />
+                    </div>
+                ): (
+                <div className='mt-3 h-full overflow-y-scroll text-sm text-slate-700'>
+                    <div className='reset-tw'>
+<Markdown>{String(item.content)}</Markdown>
+                     </div>
+                </div>
+                )}
+                </div>
+                )}
+
+    </div>
+
+  )
+}
+
+export default CreationItem
