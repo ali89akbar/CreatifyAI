@@ -16,11 +16,11 @@ function Blogtitles() {
       <form onSubmit={onSubmitHandler} action="" className='w-full max-w-lg p-4 bg-white rounded-lg border border-gray-200'>
        <div className='flex item-center '>
         <Sparkles className='w-6 pr-2 text-[#8E37EB]'/>
-        <h1 className='text-xl font-semibold'>AI title Generator</h1>
+        <h1 className='text-xl font-semibold'>AI Title Generator</h1>
     
        </div>
        <p className='text-sm mt-6 font-medium'>Keyword</p>
-       <input onChange={(e)=>setInput(e.target.value)} type="text" className='w-full p-2 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300' placeholder='Future of AI is...' required />
+       <input onChange={(e)=>setInput(e.target.value)} value={input} type="text" className='w-full p-2 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300' placeholder='Future of AI is...' required />
        <p className='mt-6 text-sm font-medium'>Category</p>
        <div className='mt-3 flex gap-3 flex-wrap sm:max-w-9/11'>{BlogCategories.map((item,index)=>(
         <span onClick={()=> setSelectedCategory(item)} 

@@ -21,7 +21,7 @@ function WriteArticle() {
     
        </div>
        <p className='text-sm mt-6 font-medium'>Article Topic</p>
-       <input onChange={(e)=>setInput(e.target.value)} type="text" className='w-full p-2 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300' placeholder='Future of AI is...' required />
+       <input onChange={(e)=>setInput(e.target.value)} value={input} type="text" className='w-full p-2 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300' placeholder='Future of AI is...' required />
        <p className='mt-6 text-sm font-medium'>Article Length</p>
        <div className='mt-3 flex gap-3 flex-wrap sm:max-w-9/11'>{articleLength.map((item,index)=>(
         <span onClick={()=> setSelectedLength(item)} 
