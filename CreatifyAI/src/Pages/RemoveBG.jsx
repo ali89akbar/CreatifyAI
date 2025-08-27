@@ -1,11 +1,8 @@
-import { Eraser, Hash, Sparkles } from 'lucide-react';
+import { Eraser, Sparkles } from 'lucide-react';
 import React from 'react'
 
 function RemoveBG() {
-    const BlogCategories = [
-      'General','Technology','Health','Finance','Travel','Food','Lifestyle','Education','Entertainment','Sports'
-    ]
-    const [selectedCategory,setSelectedCategory] = React.useState(BlogCategories[0])
+  
     const [input,setInput] = React.useState('');
     const onSubmitHandler = (e)=>{
       e.preventDefault();
