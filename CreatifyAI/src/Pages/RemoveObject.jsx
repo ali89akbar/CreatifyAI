@@ -1,4 +1,4 @@
-import { Eraser, Scissors, Sparkles } from 'lucide-react';
+import { Scissors, Sparkles } from 'lucide-react';
 import React from 'react'
 
 function RemoveObject() {
