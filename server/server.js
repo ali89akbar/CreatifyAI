@@ -12,9 +12,11 @@ app.use(express.json())
 app.use(clerkMiddleware());
 app.use(requireAuth());
 
-app.use('/api/ai',aiRouter)
+app.use('/api/ai',requireAuth(),aiRouter)
 
-app.get('/',(req,res)=>response.send('Server is Live!'))
+app.get('/',(req,res)=>{
+    console.log("Server is Live");
+    res.send('Server is Live!')})
 
-
-app.listen(process.env.PORT || 3000, () => console.log(`Server is running on port ${process.env.PORT || 3000}`));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server is running on port ${process.env.PORT}`));
