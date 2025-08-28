@@ -2,6 +2,7 @@ import express, { response } from "express";
 import cors from "cors";
 import 'dotenv/config';
 import {clerkMiddleware, requireAuth} from '@clerk/express';
+import aiRouter from "./route/aiRoute.js";
 
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(express.json())
 app.use(clerkMiddleware());
 app.use(requireAuth());
 
+app.use('/api/ai',aiRouter)
 
 app.get('/',(req,res)=>response.send('Server is Live!'))
 
