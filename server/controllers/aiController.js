@@ -5,7 +5,7 @@ import { clerkClient } from "@clerk/express";
 import 'dotenv/config';
 import axios from "axios";
 import fs from 'fs'
-import 
+import pdf from 'pdf-parse/lib/pdf-parse.js';
 import {v2 as cloudinary} from 'cloudinary';
 const AI = new OpenAI({
     apiKey: process.env.GEMINI_API_KEY,
@@ -229,11 +229,25 @@ export const resumeReview = async(req,res)=>{
         return res.json({success:false,error:"File size exceeds 5MB limit."});
        }
        const dataBuffer = fs.readFileSync(resume.path);
-       const pdfData = await pdf
+       const pdfData = await pdf(dataBuffer);
+       const prompt = `Review the following resume and provide constructive feedback on its strengths, weakness, and areas for improvement. Resume Content:\n\n${pdfData.text}`;
 
-       await sql`INSERT INTO creations(user_id,prompt,content,type) values(${userId},${`Removed ${object} from image`},${imageUrl},'image')`;
+        const response = await AI.chat.completions.create({
+    model: "gemini-2.0-flash",
+    messages: [
+        {
+            role: "user",
+            content: prompt,
+        },
+    ],
+    temperature:0.7,
+    max_tokens: 1000,
+});
+const content = response.choices[0].message.content;
 
-       res.json({success:true,content:imageUrl});
+       await sql`INSERT INTO creations(user_id,prompt,content,type) values(${userId},'Review the uploaded resume',${content},'resume-review')`;
+
+       res.json({success:true,content});
 
      } catch (error) {
        console.log(error.message)
