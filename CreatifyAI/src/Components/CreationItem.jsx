@@ -7,7 +7,7 @@ function CreationItem({item}) {
     <div onClick={()=>setExpanded(!expanded)} className='p-4 max-w-5xl text-sm bg-white border border-gry-200 rounded-lg cursor-pointer'>
         <div className='flex justify-between items-center gap-4'>
             <div>
-                <h2 className='font-medium text-slate-700'>{item.prompt}</h2>   
+                <p className='font-medium text-slate-700 text-lg'>{item.prompt}</p>   
                 <p>{item.type} - {new Date(item.created_at).toLocaleDateString()}</p>
             </div>
             <button className='bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E40AF] px-4 py-1 rounded-full'>{item.type}</button>

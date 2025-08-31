@@ -25,7 +25,7 @@ export const assets = {
 export const AiToolsData = [
     {
         title: 'AI Article Writer',
-        description: 'Generate high-quality, engaging articles on any topic with our AI writing technology.',
+        description: 'Generate high-quality, engaging articles on any topic with our AI writing tool.',
         Icon: SquarePen,
         bg: { from: '#3588F2', to: '#0BB0D7' },
         path: '/ai/write-article'
@@ -39,7 +39,7 @@ export const AiToolsData = [
     },
     {
         title: 'AI Image Generation',
-        description: 'Create stunning visuals with our AI image generation tool, Experience the power of AI ',
+        description: 'Create stunning visuals with our AI image generation tool, Experience the AI power ',
         Icon: Image,
         bg: { from: '#20C363', to: '#11B97E' },
         path: '/ai/generate-images'
@@ -53,14 +53,14 @@ export const AiToolsData = [
     },
     {
         title: 'Object Removal',
-        description: 'Remove unwanted objects from your images seamlessly with our AI object removal tool.',
+        description: 'Remove unwanted objects from your images with our AI object removal tool.',
         Icon: Scissors,
         bg: { from: '#5C6AF1', to: '#427DF5' },
         path: '/ai/remove-object'
     },
     {
         title: 'Resume Reviewer',
-        description: 'Get your resume reviewed by AI to improve your chances of landing your dream job.',
+        description: 'Get your resume reviewed by AI to improve chances of landing dream job.',
         Icon: FileText,
         bg: { from: '#12B7AC', to: '#08B6CE' },
         path: '/ai/review-resume'

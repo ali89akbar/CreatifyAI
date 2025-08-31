@@ -1,0 +1,38 @@
+    .perspective-1000 {
+        perspective: 1000px;
+    }
+    
+    .transform-style-preserve-3d {
+        transform-style: preserve-3d;
+    }
+    
+    .translate-z-0 {
+        transform: translateZ(0);
+    }
+    
+    .translate-z-\[-4px\] {
+        transform: translateZ(-4px);
+    }
+    
+    .translate-z-\[-12px\] {
+        transform: translateZ(-12px);
+    }
+    
+    .translate-z-\[-20px\] {
+        transform: translateZ(-20px);
+    }
+    
+    .rotate-y-8 {
+        transform: rotateY(8deg);
+    }
+    
+    .rotate-x-4 {
+        transform: rotateX(4deg);
+    }
+    
+    .shadow-3xl {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+
+      
