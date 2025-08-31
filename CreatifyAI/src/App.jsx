@@ -12,16 +12,13 @@ import ReviewResume from './Pages/ReviewResume';
 import RemoveBG from './Pages/RemoveBG'
 import { useAuth } from '@clerk/clerk-react'
 import { useEffect } from 'react'
-
+import {Toaster} from 'react-hot-toast'
 function App() {
-  const {getToken} = useAuth();
 
-  useEffect(()=>{
-    getToken().then((e)=>console.log(e))
-  },[])
 
   return (
    <div>
+    <Toaster />
     <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/ai' element={<Layout/>}>
