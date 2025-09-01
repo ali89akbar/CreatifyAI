@@ -1,6 +1,34 @@
+import toast from "react-hot-toast";
 import { assets } from "../assets/assets";
+import { useState } from "react";
+import axios from "axios";
+import { useAuth } from "@clerk/clerk-react";
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL
 
 export default function Footer() {
+      const [email, setEmail] = useState("");
+      const {getToken} = useAuth();
+
+    const handleMail=async(e)=>{
+        e.preventDefault();
+        try {
+            const {data} = await axios.post('/api/user/send-mail',{
+                to: email,
+                subject: "Newsletter Subscription",
+            },{
+                headers: {Authorization:`Bearer ${await getToken()}`},
+                   });
+            console.log(data)
+            if (data.success) {
+                toast.success("Subscribed successfully");
+            } else {
+                toast.error(data.error || "Failed to send email");
+            }
+        } catch (error) {
+            toast.error("Failed to send email");
+        }
+    }
+      
     return (
         <footer className="px-6 md:px-16 lg:px-24 xl:px-32 pt-8 w-full text-gray-500">
             <div className="flex flex-col md:flex-row justify-between w-full gap-10 border-b border-gray-500/30 pb-6">
@@ -27,8 +55,8 @@ export default function Footer() {
                         <div className="text-sm space-y-2">
                             <p>The latest news, articles, and resources, sent to your inbox weekly.</p>
                             <div className="flex items-center gap-2 pt-4">
-                                <input className="border border-gray-500/30 placeholder-gray-500 focus:ring-2 ring-indigo-600 outline-none w-full max-w-64 h-9 rounded px-2" type="email" placeholder="Enter your email" />
-                                <button className="bg-primary w-24 h-9 text-white rounded cursor-pointer">Subscribe</button>
+                                <input className="border border-gray-500/30 placeholder-gray-500 focus:ring-2 ring-indigo-600 outline-none w-full max-w-64 h-9 rounded px-2" type="email" placeholder="Enter your email" onChange={(e)=> setEmail(e.target.value)} />
+                                <button className="bg-primary w-24 h-9 text-white rounded cursor-pointer" onClick={(e)=>handleMail(e)} type="button">Subscribe</button>
                             </div>
                         </div>
                     </div>

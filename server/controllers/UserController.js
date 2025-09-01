@@ -1,5 +1,7 @@
 import sql from "../configs/db.js";
 import 'dotenv/config';
+import nodemailer from "nodemailer";
+
 
 
 export const getUserCreations = async(req,res) =>{
@@ -56,6 +58,32 @@ export const toggleLikeCreation = async(req,res) =>{
         
     } catch (error) {
         res.json({success:false,error:error.message});
+        
+    }
+}
+
+export const getMailinfo = async(req,res)=>{
+    try {
+
+        const { to, subject} = req.body;
+        const transporter= nodemailer.createTransport({
+            service:'gmail',
+            auth:{
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            },
+        })
+
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to,
+            subject,
+        };
+        await transporter.sendMail(mailOptions);
+        res.json({success:true,message:"Email sent successfully"});
+        
+    } catch (error) {
+        res.json({success:false, error:error.message})
         
     }
 }
