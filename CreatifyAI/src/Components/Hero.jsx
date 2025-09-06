@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { assets } from '../assets/assets';
+import gradientBackground from '../assets/gradientBackground.png';
+
 // Floating Star Component
 const FloatingStar = ({ delay = 0, duration = 4 }) => {
   const controls = useAnimation();
@@ -124,8 +126,9 @@ function Hero() {
   }, []);
 
   return (
-    <div className='px-4 sm:px-20 xl:px-32 relative inline-flex flex-col w-full justify-center bg-[url(src/assets/gradientBackground.png)] bg-cover bg-no-repeat min-h-screen overflow-hidden'>
-      
+ <div
+      className={`px-4 sm:px-20 xl:px-32 relative inline-flex flex-col w-full justify-center bg-[url('${gradientBackground}')] bg-cover bg-no-repeat min-h-screen overflow-hidden`}
+    >      
       {/* Animated 3D Background Elements */}
       <div className='absolute inset-0 pointer-events-none'>
         

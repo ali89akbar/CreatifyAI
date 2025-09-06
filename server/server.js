@@ -7,10 +7,19 @@ import connectCloudinary from "./configs/Cloudinary.js"
 import userRouter from "./route/userRoute.js";
 const app = express();
 await connectCloudinary();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",   // frontend local
+   "https://develop.d1754oldj9p9jn.amplifyapp.com/" // production frontend (Amplify / S3 / CloudFront)
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json())
 app.use(clerkMiddleware());
 app.use(requireAuth());
+app.get("/health", (req,res)=> res.sendStatus(200));
 
 app.use('/api/ai',aiRouter)
 
